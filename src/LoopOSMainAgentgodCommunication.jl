@@ -5,22 +5,22 @@ using TheoryOfGod
 using TheoryOfGodgod: god, ∃!
 using TheoryOfGodCommunication
 
-const CREATESOCKET = Socket(REP)
-const OBSERVESOCKET = Socket(REP)
+const CREATESOCKET = Ref{Socket}()
+const OBSERVESOCKET = Ref{Socket}()
 
 function init(createlocation, observelocation, ω)
-    bind(CREATESOCKET, createlocation)
-    bind(OBSERVESOCKET, observelocation)
-    @async @whiletrue create(CREATESOCKET, ω), @async @whiletrue observe(OBSERVESOCKET, ω)
+    CREATESOCKET[] = Socket(REP)
+    OBSERVESOCKET[] = Socket(REP)
+    bind(CREATESOCKET[], createlocation)
+    bind(OBSERVESOCKET[], observelocation)
+    @async @whiletrue create(CREATESOCKET[], ω), @async @whiletrue observe(OBSERVESOCKET[], ω)
 end
 function create(socket, ω)
     message = recv(socket)
     buffer = IOBuffer(message)
     data = deserialize(buffer)
     try 
-        if data isa god
-            ∃!(data.g, data.ϕ, ω)
-        elseif data isa ∃2d
+        if data isa ∃2d
             ∃!2d(data.g, data.μ, data.ρ, data.ϕ, ω)
         elseif data isa ∃3d
             ∃!3d(data.g, data.μ, data.ρ, data.ϕ, ω)
