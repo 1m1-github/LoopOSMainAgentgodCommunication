@@ -5,9 +5,8 @@ using TheoryOfGod
 using TheoryOfGodgod: god, ∃!
 using TheoryOfGodCommunication
 
-const CONTEXT = ZMQ.context()
-const CREATESOCKET = Socket(CONTEXT, REP)
-const OBSERVESOCKET = Socket(CONTEXT, REP)
+const CREATESOCKET = Socket(REP)
+const OBSERVESOCKET = Socket(REP)
 
 function init(createlocation, observelocation, ω)
     bind(CREATESOCKET, createlocation)
