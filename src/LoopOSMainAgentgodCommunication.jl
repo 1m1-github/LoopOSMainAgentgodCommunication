@@ -9,7 +9,7 @@ using TheoryOfGodCommunication
 const CREATESOCKET = Ref{Socket}()
 const OBSERVESOCKET = Ref{Socket}()
 
-function init(createlocation, observelocation, ω)
+function start(createlocation, observelocation, ω)
     CREATESOCKET[] = Socket(REP)
     OBSERVESOCKET[] = Socket(REP)
     bind(CREATESOCKET[], createlocation)

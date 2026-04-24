@@ -1,6 +1,6 @@
 name = "LoopOSMainAgentgodCommunication"
 uuid = "c88efa1e-98af-4ac2-839b-69b53e3bc0ad"
-version = "5.0.0"
+version = "6.0.0"
 authors = ["1m1 <imi@1m1.io>"]
 
 [deps]
