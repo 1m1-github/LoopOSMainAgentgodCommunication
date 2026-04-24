@@ -1,6 +1,7 @@
 module LoopOSMainAgentgodCommunication
 
 using ZMQ
+using LoopOS: @whiletrue
 using TheoryOfGod
 using TheoryOfGodgod: god, ∃!
 using TheoryOfGodCommunication
